@@ -1,0 +1,21 @@
+{
+    "name": "jmoati/helper-bundle",
+    "description": "Aliases & Bases Entity for Symfony2",
+    "authors": [
+        {
+            "name": "Jacques Moati",
+            "email": "jacques@moati.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*"
+    },
+    "suggest": {
+        "php >= 5.4": "If you want to use traits"
+    },
+    "autoload": {
+        "psr-0": {"Jmoati\\HelperBundle": ""}
+    },
+    "target-dir": "Jmoati/HelperBundle"
+}
