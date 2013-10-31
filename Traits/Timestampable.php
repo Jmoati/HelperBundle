@@ -2,25 +2,21 @@
 
 namespace Jmoati\HelperBundle\Traits;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation AS Gedmo;
-
 trait Timestampable
 {
 
     /**
      * @var \DateTime $created
      *
-     * @ORM\Column(type="datetime")
-     * @Gedmo\Timestampable(on="create")
+     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      */
     protected $created;
-
     /**
      * @var \DateTime $updated
      *
-     * @ORM\Column(type="datetime")
-     * @Gedmo\Timestampable(on="update")
+     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     * @Gedmo\Mapping\Annotation\Timestampable(on="update")
      */
     protected $updated;
 
@@ -34,6 +30,7 @@ trait Timestampable
 
     /**
      * @param  \DateTime $created
+     *
      * @return Entity
      */
     public function setCreated(\DateTime $created)
@@ -53,6 +50,7 @@ trait Timestampable
 
     /**
      * @param  \DateTime $updated
+     *
      * @return Entity
      */
     public function setUpdated(\DateTime $updated)

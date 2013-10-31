@@ -2,17 +2,14 @@
 
 namespace Jmoati\HelperBundle\Traits;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation AS Gedmo;
-
 trait Entity
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Doctrine\ORM\Mapping\Column(name="id", type="integer")
+     * @Doctrine\ORM\Mapping\Id
+     * @Doctrine\ORM\Mapping\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

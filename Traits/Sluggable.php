@@ -2,23 +2,21 @@
 
 namespace Jmoati\HelperBundle\Traits;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-
 trait Sluggable
 {
 
     /**
      * @var string $name
      *
-     * @ORM\Column(type="string")
+     * @Doctrine\ORM\Mapping\Column(type="string")
+     * @Symfony\Component\Validator\Constraints\NotBlank()
      */
     protected $name;
     /**
      * @var string $slug
      *
-     * @ORM\Column(type="string", unique=true)
-     * @Gedmo\Slug(fields={"name"})
+     * @Doctrine\ORM\Mapping\Column(type="string", unique=true)
+     * @Gedmo\Mapping\Annotation\Slug(fields={"name"})
      */
     protected $slug;
 
