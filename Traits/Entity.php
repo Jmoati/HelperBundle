@@ -3,7 +3,6 @@
 namespace Jmoati\HelperBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation AS Gedmo;
 
 trait Entity
 {

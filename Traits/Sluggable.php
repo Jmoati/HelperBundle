@@ -4,6 +4,7 @@ namespace Jmoati\HelperBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait Sluggable
 {
@@ -12,6 +13,7 @@ trait Sluggable
      * @var string $name
      *
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $name;
     /**

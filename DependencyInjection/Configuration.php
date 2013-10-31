@@ -14,7 +14,6 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode    = $treeBuilder->root('jmoati_helper');
 
         return $treeBuilder;
     }
