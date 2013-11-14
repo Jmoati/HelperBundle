@@ -3,7 +3,7 @@
 namespace Jmoati\HelperBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation AS Gedmo;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 abstract class Entity
 {
@@ -51,6 +51,7 @@ abstract class Entity
 
     /**
      * @param  \DateTime $created
+     *
      * @return Entity
      */
     public function setCreated(\DateTime $created)
@@ -70,6 +71,7 @@ abstract class Entity
 
     /**
      * @param  \DateTime $updated
+     *
      * @return Entity
      */
     public function setUpdated(\DateTime $updated)

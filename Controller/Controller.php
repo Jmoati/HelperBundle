@@ -3,6 +3,7 @@
 namespace Jmoati\HelperBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as SensioController;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,15 +14,27 @@ abstract class Controller extends SensioController
     const FLASH_ERROR   = 'error';
 
     /**
-     * @return Doctrine\ORM\EntityManager
+     *
+     * @param array|string $url
+     * @param integer      $status
+     *
+     * @return Response
      */
-    protected function em()
+    public function redirect($url, $status = 302)
     {
-        return $this->getDoctrine()->getManager();
+        if (is_array($url)) {
+            if (!isset($url[1])) {
+                $url[1] = array();
+            }
+            $url = $this->generateUrl($url[0], $url[1]);
+        }
+
+        return parent::redirect($url, $status);
     }
 
     /**
-     * @param  string                        $repository
+     * @param string $repository
+     *
      * @return Doctrine\ORM\EntityRepository
      */
     protected function getRepository($repository)
@@ -30,7 +43,16 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  object     $entity
+     * @return Doctrine\ORM\EntityManager
+     */
+    protected function em()
+    {
+        return $this->getDoctrine()->getManager();
+    }
+
+    /**
+     * @param object $entity
+     *
      * @return Controller
      */
     protected function remove($entity)
@@ -41,7 +63,8 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  object     $entity
+     * @param object $entity
+     *
      * @return Controller
      */
     protected function persist($entity)
@@ -52,7 +75,8 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  object     $entity
+     * @param object $entity
+     *
      * @return Controller
      */
     protected function flush($entity = null)
@@ -66,7 +90,8 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  string              $dql
+     * @param string $dql
+     *
      * @return \Doctrine\ORM\Query
      */
     protected function createQuery($dql)
@@ -77,6 +102,7 @@ abstract class Controller extends SensioController
     /**
      * @param integer $page
      * @param integer $step
+     *
      * @return
      */
     protected function paginate($entities, $page = null, $step = false)
@@ -97,7 +123,29 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  string     $message
+     *
+     * @param string $parameter
+     *
+     * @return boolean
+     */
+    protected function hasParameter($parameter)
+    {
+        return $this->container->hasParameter($parameter);
+    }
+
+    /**
+     * @param string $parameter
+     *
+     * @return string
+     */
+    protected function getParameter($parameter)
+    {
+        return $this->container->getParameter($parameter);
+    }
+
+    /**
+     * @param string $message
+     *
      * @return Controller
      */
     protected function successFlash($message)
@@ -108,23 +156,14 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  string     $message
-     * @return Controller
+     * @param string $eventName
+     * @param Event  $event
+     *
+     * @return $this
      */
-    protected function errorFlash($message)
+    protected function dispatch($eventName, Event $event = null)
     {
-        $this->get('session')->getFlashBag()->add(self::FLASH_ERROR, $message);
-
-        return $this;
-    }
-
-    /**
-     * @param  string     $event
-     * @return Controller
-     */
-    protected function dispatch($event)
-    {
-        $this->get('event_dispatcher')->dispatch($event);
+        $this->get('event_dispatcher')->dispatch($eventName, $event);
 
         return $this;
     }
@@ -146,8 +185,9 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  string $string
-     * @param  array  $args
+     * @param string $string
+     * @param array  $args
+     *
      * @return string
      */
     protected function translate($string, $args = array())
@@ -172,7 +212,8 @@ abstract class Controller extends SensioController
     }
 
     /**
-     * @param  Form    $form
+     * @param Form $form
+     *
      * @return boolean
      */
     protected function processForm(Form $form)
@@ -194,21 +235,15 @@ abstract class Controller extends SensioController
     }
 
     /**
+     * @param string $message
      *
-     * @param  array|string $url
-     * @param  integer      $status
-     * @return Response
+     * @return Controller
      */
-    public function redirect($url, $status = 302)
+    protected function errorFlash($message)
     {
-        if (is_array($url)) {
-            if (!isset($url[1])) {
-                $url[1] = array();
-            }
-            $url = $this->generateUrl($url[0], $url[1]);
-        }
+        $this->get('session')->getFlashBag()->add(self::FLASH_ERROR, $message);
 
-        return parent::redirect($url, $status);
+        return $this;
     }
 
     /**
@@ -217,25 +252,6 @@ abstract class Controller extends SensioController
     protected function getLocale()
     {
         return $this->getRequest()->attributes->get('_locale');
-    }
-
-    /**
-     * @param  string $parameter
-     * @return string
-     */
-    protected function getParameter($parameter)
-    {
-        return $this->container->getParameter($parameter);
-    }
-
-    /**
-     *
-     * @param  string  $parameter
-     * @return boolean
-     */
-    protected function hasParameter($parameter)
-    {
-        return $this->container->hasParameter($parameter);
     }
 
 }

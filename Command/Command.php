@@ -45,10 +45,10 @@ abstract class Command extends ContainerAwareCommand
     }
 
     /**
-     * @param  string          $cmd
-     * @param  OutputInterface $output
-     * @param  string          $display_message
-     * @param  bool            $check_success
+     * @param string          $cmd
+     * @param OutputInterface $output
+     * @param string          $display_message
+     * @param bool            $check_success
      *
      * @return Process
      */

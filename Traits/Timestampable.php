@@ -29,7 +29,7 @@ trait Timestampable
     }
 
     /**
-     * @param  \DateTime $created
+     * @param \DateTime $created
      *
      * @return Entity
      */
@@ -49,7 +49,7 @@ trait Timestampable
     }
 
     /**
-     * @param  \DateTime $updated
+     * @param \DateTime $updated
      *
      * @return Entity
      */

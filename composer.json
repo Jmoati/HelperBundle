@@ -16,7 +16,9 @@
         "php >= 5.4": "If you want to use traits"
     },
     "autoload": {
-        "psr-0": {"Jmoati\\HelperBundle": ""}
+        "psr-0": {
+            "Jmoati\\HelperBundle": ""
+        }
     },
     "target-dir": "Jmoati/HelperBundle"
 }

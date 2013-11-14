@@ -1,0 +1,24 @@
+{% extends base_layout %}
+
+{% block content %}
+    <div>
+        {% block form_edit %}
+            <form method="post" action="{% block form_edit_action %}{% endblock %}" {{ form_enctype(form) }}>
+                <legend>{% block form_edit_legend %}{% endblock %}</legend>
+
+                {{ form_errors(form) }}
+
+                {% block form_edit_content %}
+                {% endblock %}
+
+                {{ form_rest(form) }}
+
+                <div>
+                    <a href="{% block cancel_url %}#{% endblock %}">{% trans %}action.cancel{% endtrans %}</a>
+                    <button type="submit">{% block form_edit_submit_title %}{% endblock %}</button>
+                </div>
+
+            </form>
+        {% endblock %}
+    </div>
+{% endblock %}

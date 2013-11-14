@@ -6,5 +6,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class JmoatiHelperBundle extends Bundle
 {
-    
+
 }
