@@ -21,4 +21,11 @@ trait Entity
         return $this->id;
     }
 
+    /**
+     * @return static
+     */
+    public static function create()
+    {
+        return new static();
+    }
 }
