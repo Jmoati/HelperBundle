@@ -23,7 +23,7 @@ trait Sluggable
     /**
      * @return string
      */
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
@@ -33,7 +33,7 @@ trait Sluggable
      *
      * @return $this
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 
@@ -43,7 +43,7 @@ trait Sluggable
     /**
      * @return string
      */
-    public function getSlug()
+    public function getSlug() : string
     {
         return $this->slug;
     }
@@ -53,7 +53,7 @@ trait Sluggable
      *
      * @return $this
      */
-    public function setSlug($slug)
+    public function setSlug(string $slug)
     {
         $this->slug = $slug;
 

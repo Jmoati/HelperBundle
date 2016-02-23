@@ -22,24 +22,3 @@ Add to your `jmoati-helper-bundle` to your dependencies:
 ```
 
 To install, run `php composer.phar update jmoati/helper-bundle`.
-
-### Add JmoatiHelperBundle to your application kernel
-
-``` php
-<?php
-
-    // app/AppKernel.php
-    public function registerBundles()
-    {
-        return array(
-            // ...
-            new Jmoati\HelperBundle\JmoatiHelperBundle(),
-            // ...
-        );
-    }
-```
-
-## Score:
-
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/af96999a-5fa7-48c2-a296-39fc0b343fb1/big.png)](https://insight.sensiolabs.com/projects/af96999a-5fa7-48c2-a296-39fc0b343fb1)

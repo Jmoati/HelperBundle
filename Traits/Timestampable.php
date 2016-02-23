@@ -23,7 +23,7 @@ trait Timestampable
     /**
      * @return \DateTime
      */
-    public function getCreated()
+    public function getCreated() : \DateTime
     {
         return $this->created;
     }
@@ -43,7 +43,7 @@ trait Timestampable
     /**
      * @return \DateTime
      */
-    public function getUpdated()
+    public function getUpdated() : \DateTime
     {
         return $this->updated;
     }

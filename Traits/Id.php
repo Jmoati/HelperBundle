@@ -2,7 +2,7 @@
 
 namespace Jmoati\HelperBundle\Traits;
 
-trait Entity
+trait Id
 {
     /**
      * @var integer
@@ -14,9 +14,9 @@ trait Entity
     protected $id;
 
     /**
-     * @return integer
+     * @return int
      */
-    public function getId()
+    public function getId() : int
     {
         return $this->id;
     }

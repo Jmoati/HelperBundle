@@ -8,14 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class Controller extends SensioController
 {
-
-    const FLASH_SUCCESS = 'success';
-    const FLASH_ERROR   = 'error';
-
     /**
      * @return Doctrine\ORM\EntityManager
      */
-    protected function em()
+    protected function em() : Doctrine\ORM\EntityManager
     {
         return $this->getDoctrine()->getManager();
     }
@@ -24,7 +20,7 @@ abstract class Controller extends SensioController
      * @param  string                        $repository
      * @return Doctrine\ORM\EntityRepository
      */
-    protected function getRepository($repository)
+    protected function getRepository(string $repository) : Doctrine\ORM\EntityRepository
     {
         return $this->em()->getRepository($repository);
     }
