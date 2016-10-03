@@ -9,13 +9,13 @@ It also gives Traits and entities to simply define your own entities.
 
 ### Get the bundle
 
-Add to your `jmoati-helper-bundle` to your dependencies:
+Add to your dependencies:
 
 ``` json
 {
     "require": {
         ...
-        "jmoati/helper-bundle": "0.0.*"
+        "jmoati/helper-bundle": "~0.1"
     }
     ...
 }

@@ -12,6 +12,7 @@ trait Sluggable
      * @Symfony\Component\Validator\Constraints\NotBlank()
      */
     protected $name;
+
     /**
      * @var string $slug
      *

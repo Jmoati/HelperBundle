@@ -10,10 +10,9 @@
     ],
     "require": {
         "php": ">=7.0",
-        "symfony/symfony": "3.*"
+        "symfony/symfony": "~3.0"
     },
     "autoload": {
-        "psr-0": {"Jmoati\\HelperBundle": ""}
-    },
-    "target-dir": "Jmoati/HelperBundle"
+        "psr-4": {"Jmoati\\HelperBundle\\": "src"}
+    }
 }
